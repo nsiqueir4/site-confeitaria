@@ -1,0 +1,112 @@
+/* Estilos gerais */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f45d84; /* Usando a paleta de cores fornecida */
+    color: white;
+}
+
+.logo img {
+    max-height: 80px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.menu li {
+    margin: 0 10px;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+}
+
+.menu a:hover {
+    text-decoration: underline;
+}
+
+.mobile-menu {
+    display: none;
+    cursor: pointer;
+}
+
+.mobile-menu span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 5px 0;
+}
+
+.menu.active {
+    display: block;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background-color: #f45d84;
+    border-radius: 5px;
+    width: 200px;
+}
+
+@media (max-width: 768px) {
+    .menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background-color: #f45d84;
+        width: 200px;
+    }
+
+    .mobile-menu {
+        display: block;
+    }
+}
+
+.about-section {
+    padding: 20px;
+    background-color: #fba2c2; /* Cor de fundo suave */
+    color: #7c0826; /* Cor de texto */
+    text-align: center;
+    flex: 1; /* Garante que a seção ocupe o espaço disponível */
+}
+
+.about-section h2 {
+    margin-top: 0;
+}
+
+.about-section p {
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+footer {
+    padding: 10px 20px;
+    background-color: #ac889c; /* Cor de fundo do rodapé */
+    color: white;
+    text-align: center;
+}
+x

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre - Sempre Doce</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/sobre.css') }}">
+</head>
+<body>
+    <!-- Cabeçalho com o menu de navegação -->
+    <header>
+        <div class="logo">
+            <img src="https://i.pinimg.com/736x/2c/a8/25/2ca82505bdad9c7b2d84a7739db4b628.jpg" alt="Sempre Doce Logo">
+        </div>
+        <nav>
+            <div class="mobile-menu" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="menu">
+                <li><a href="/">Home</a></li>
+                <li><a href="/cardapio">Cardápio</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Seção Sobre -->
+    <section id="sobre" class="about-section">
+        <div class="about-content">
+            <h2>Sobre a Sempre Doce</h2>
+            <p>
+                A Sempre Doce é uma confeitaria apaixonada por criar doces e sobremesas que trazem alegria e sabor para o seu dia. Fundada com o objetivo de oferecer produtos de alta qualidade, nossa confeitaria se destaca pela utilização de ingredientes frescos e receitas tradicionais que encantam o paladar.
+            </p>
+            <p>
+                Nossa equipe de confeiteiros é dedicada a criar delícias que são tão bonitas quanto saborosas. Desde bolos personalizados até doces finos e saborosos, cada item é preparado com cuidado e atenção aos detalhes.
+            </p>
+            <p>
+                Se você procura um doce para uma ocasião especial ou apenas deseja se deliciar com algo saboroso, a Sempre Doce é o lugar certo para você. Venha nos visitar e descubra o verdadeiro prazer de saborear doces feitos com amor e dedicação.
+            </p>
+        </div>
+    </section>
+
+    <!-- Seção de rodapé -->
+    <footer>
+        <p>&copy; 2024 Sempre Doce. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Script para o menu responsivo -->
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menu = document.querySelector('.menu');
+
+        mobileMenu.addEventListener('click', () => {
+            menu.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

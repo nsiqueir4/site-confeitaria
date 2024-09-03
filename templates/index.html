@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sempre Doce - Confeitaria</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <link rel="icon" href="https://i.pinimg.com/736x/2c/a8/25/2ca82505bdad9c7b2d84a7739db4b628.jpg">
+    <style>
+        /* Adicione o CSS para a navegação aqui */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #f45d84; /* Usando a paleta de cores fornecida */
+            color: white;
+        }
+
+        .logo img {
+            max-height: 80px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .site-title {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        .menu li {
+            margin: 0 10px;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .menu a:hover {
+            text-decoration: underline;
+        }
+
+        .mobile-menu {
+            display: none;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 5px 0;
+        }
+
+        .menu.active {
+            display: block;
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            background-color: #f45d84;
+            border-radius: 5px;
+            width: 200px;
+        }
+
+        @media (max-width: 768px) {
+            .menu {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 20px;
+                background-color: #f45d84;
+                width: 200px;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabeçalho com o menu de navegação -->
+    <header>
+        <div class="logo">
+            <img src="https://i.pinimg.com/736x/2c/a8/25/2ca82505bdad9c7b2d84a7739db4b628.jpg" alt="Sempre Doce Logo">
+        </div>
+        <nav>
+            <div class="mobile-menu" id="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="menu">
+                <li><a href="/">Home</a></li>
+                <li><a href="/cardapio">Cardápio</a></li>
+                <li><a href="/sobre">Sobre</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Seção principal -->
+    <section id="home" class="hero-section">
+        <div class="hero-content">
+            <h2>Bem-vindo à Sempre Doce</h2>
+            <p>As melhores sobremesas para adoçar o seu dia!</p>
+        </div>
+    </section>
+
+    <!-- Seção de rodapé -->
+    <footer>
+        <p>&copy; 2024 Sempre Doce. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Script para o menu responsivo -->
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menu = document.querySelector('.menu');
+
+        mobileMenu.addEventListener('click', () => {
+            menu.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

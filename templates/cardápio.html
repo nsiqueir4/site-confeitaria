@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardápio - Sempre Doce</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <link rel="icon" href="https://i.pinimg.com/736x/2c/a8/25/2ca82505bdad9c7b2d84a7739db4b628.jpg">
+    <style>
+        /* Cabeçalho fixo */
+        header {
+            background-color: #f45d84; /* .color1 */
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Logo */
+        .logo-img {
+            height: 50px;
+            width: auto;
+        }
+
+        /* Centralização do título */
+        .site-title {
+            font-size: 24px;
+            color: #fba2c2; /* .color2 */
+            text-align: center;
+            position: absolute; /* Posicionamento absoluto para centralização */
+            left: 50%; /* Centraliza horizontalmente */
+            transform: translateX(-50%); /* Ajusta o posicionamento */
+            margin: 0;
+        }
+
+        /* Menu de navegação */
+        nav {
+            flex: 1;
+            display: flex;
+            justify-content: center; /* Move o menu para a direita */
+            margin-left: auto; /* Empurra o menu para a direita */
+            max-width: 50%; /* Define um tamanho máximo para o menu */
+        }
+
+        /* Menu de navegação */
+        nav .menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 15px;
+        }
+
+        nav .menu a {
+            text-decoration: none;
+            color: #d0a8bc; /* .color5 */
+            padding: 10px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        nav .menu a:hover {
+            background-color: #7c0826; /* .color3 */
+            color: #fba2c2; /* .color2 */
+            border-radius: 4px;
+        }
+
+        /* Seção de Cardápio */
+        .menu-section {
+            background-color: #fba2c2; /* .color2 */
+            padding: 50px 20px;
+            text-align: center;
+            margin-top: 80px; /* Adiciona margem para não sobrepor o cabeçalho */
+            position: relative; /* Para posicionar as setas */
+        }
+
+        .section-title {
+            font-size: 28px;
+            color: #7c0826; /* .color3 */
+            margin-bottom: 20px;
+        }
+
+        /* Container dos itens do cardápio */
+        .menu-container {
+            display: flex;
+            flex-wrap: nowrap; /* Evita quebra de linha */
+            gap: 20px;
+            padding: 10px;
+            overflow-x: auto; /* Adiciona rolagem horizontal */
+            scroll-behavior: smooth; /* Suaviza a rolagem */
+        }
+
+        /* Estilo de cada item do cardápio */
+        .menu-item {
+            background-color: #ffffff;
+            border: 2px solid #d0a8bc; /* .color5 */
+            border-radius: 8px;
+            padding: 20px;
+            width: 250px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            flex-shrink: 0; /* Evita que os itens encolham */
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .menu-item h3 {
+            color: #7c0826; /* .color3 */
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .menu-item p {
+            color: #5b1313; /* cor escura para texto */
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-weight: bold;
+            color: #c93823; /* .color1 */
+        }
+
+        /* Rodapé fixo no final da página */
+        footer {
+            background-color: #f45d84; /* .color1 */
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: -100px; /* Inicialmente fora da tela */
+            transition: bottom 0.3s ease; /* Transição suave para aparecer */
+        }
+
+        footer.show {
+            bottom: 0; /* Torna o rodapé visível quando rolado para baixo */
+        }
+
+        /* Estilo das setas de navegação */
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #7c0826; /* .color3 */
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 10;
+        }
+
+        .arrow.left {
+            left: 10px;
+        }
+
+        .arrow.right {
+            right: 10px;
+        }
+
+        /* Visibilidade das setas */
+        .arrow.hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabeçalho com o menu de navegação -->
+    <header>
+        <div class="logo">
+            <img src="https://i.pinimg.com/736x/2c/a8/25/2ca82505bdad9c7b2d84a7739db4b628.jpg" alt="Logo Sempre Doce" class="logo-img">
+        </div>
+        <nav>
+            <ul class="menu">
+                <li><a href="/">Home</a></li>
+                <li><a href="/sobre">Sobre</a></li>
+                <li><a href="/contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Seção de Cardápio -->
+    <section class="menu-section">
+        <h2 class="section-title">Nosso Cardápio</h2>
+        <button class="arrow left" id="scrollLeft">&#10094;</button>
+        <div class="menu-container" id="menuContainer">
+            <div class="menu-item">
+                <img src="https://static.itdg.com.br/images/360-240/5df1a91c8a4ea09243af6822b9970314/318292-original.jpg" alt="Bolo de Chocolate">
+                <h3>Bolo de Chocolate</h3>
+                <p>Delicioso bolo de chocolate com cobertura de ganache e raspas de chocolate.</p>
+                <p class="price">R$ 25,00</p>
+            </div>
+            <div class="menu-item">
+                <img src="https://guiadacozinha.com.br/wp-content/uploads/2019/10/torta-morango-chocolate-branco-768x619.jpg" alt="Torta de Morango">
+                <h3>Torta de Morango</h3>
+                <p>Torta fresca com morangos suculentos e chantilly.</p>
+                <p class="price">R$ 30,00</p>
+            </div>
+            <div class="menu-item">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSu052__iSdpLwyGe1HiEc5wmayxNV8IYx3ag&s" alt="Macarons Sortidos">
+                <h3>Macarons Sortidos</h3>
+                <p>Saborosos macarons nos sabores de baunilha, chocolate e pistache.</p>
+                <p class="price">R$ 12,00 (unidade)</p>
+            </div>
+            <div class="menu-item">
+                <img src="https://i.ytimg.com/vi/FhviVWa_PNs/maxresdefault.jpg" alt="Cheesecake de Frutas Vermelhas">
+                <h3>Cheesecake de Frutas Vermelhas</h3>
+                <p>Cheesecake cremoso com calda de frutas vermelhas.</p>
+                <p class="price">R$ 35,00</p>
+            </div>
+            <div class="menu-item">
+                <img src="https://www.specialita.com/wp-content/uploads/2022/07/brownie-de-chocoavela-com-sorvete.jpg" alt="Brownie com Sorvete">
+                <h3>Brownie com Sorvete</h3>
+                <p>Brownie de chocolate com uma bola de sorvete de baunilha.</p>
+                <p class="price">R$ 20,00</p>
+            </div>
+        </div>
+        <button class="arrow right" id="scrollRight">&#10095;</button>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2024 Sempre Doce. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        document.addEventListener('scroll', function() {
+            const footer = document.querySelector('footer');
+            const scrollPosition = window.scrollY + window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
+
+            if (scrollPosition >= documentHeight) {
+                footer.classList.add('show');
+            } else {
+                footer.classList.remove('show');
+            }
+        });
+
+        const container = document.getElementById('menuContainer');
+        const scrollLeftBtn = document.getElementById('scrollLeft');
+        const scrollRightBtn = document.getElementById('scrollRight');
+
+        // Função para atualizar a visibilidade das setas
+        function updateArrowVisibility() {
+            const containerWidth = container.offsetWidth;
+            const scrollWidth = container.scrollWidth;
+            const scrollLeft = container.scrollLeft;
+
+            scrollLeftBtn.classList.toggle('hidden', scrollLeft === 0);
+            scrollRightBtn.classList.toggle('hidden', scrollLeft + containerWidth >= scrollWidth);
+        }
+
+        // Função para rolar para a esquerda
+        function scrollLeft() {
+            container.scrollBy({
+                left: -250, // Ajuste a distância de rolagem conforme necessário
+                behavior: 'smooth'
+            });
+            updateArrowVisibility();
+        }
+
+        // Função para rolar para a direita
+        function scrollRight() {
+            container.scrollBy({
+                left: 250, // Ajuste a distância de rolagem conforme necessário
+                behavior: 'smooth'
+            });
+            updateArrowVisibility();
+        }
+
+        // Adiciona os eventos de clique para as setas
+        scrollLeftBtn.addEventListener('click', scrollLeft);
+        scrollRightBtn.addEventListener('click', scrollRight);
+
+        // Atualiza a visibilidade das setas ao carregar e ao redimensionar a janela
+        window.addEventListener('load', updateArrowVisibility);
+        window.addEventListener('resize', updateArrowVisibility);
+
+        // Atualiza a visibilidade das setas no início
+        updateArrowVisibility();
+    </script>
+</body>
+</html>

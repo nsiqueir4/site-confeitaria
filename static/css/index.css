@@ -1,0 +1,113 @@
+/* Estilos globais */
+body {
+    font-family: 'Lato', sans-serif;
+    background-color: #d0a8bc; /* .color5 */
+    color: #7c0826; /* .color3 */
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* Cabeçalho fixo */
+header {
+    background-color: #f45d84; /* .color1 */
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Distribui espaço igualmente */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header .logo img {
+    height: 80px; /* Ajusta a altura da logo */
+}
+
+/* Centralização do título */
+.site-title {
+    font-size: 24px;
+    color: #fba2c2; /* .color2 */
+    text-align: center;
+    position: absolute; /* Posicionamento absoluto para centralização */
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translateX(-50%); /* Ajusta o posicionamento */
+    margin: 0;
+}
+
+/* Estilo para o container de navegação */
+nav {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end; /* Move o menu para a direita */
+    margin-left: auto; /* Empurra o menu para a direita */
+}
+
+/* Menu de navegação */
+nav .menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 15px;
+}
+
+nav .menu a {
+    text-decoration: none;
+    color: #d0a8bc; /* .color5 */
+    padding: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav .menu a:hover {
+    background-color: #7c0826; /* .color3 */
+    color: #fba2c2; /* .color2 */
+    border-radius: 4px;
+}
+
+/* Seção Principal com imagem de fundo e sobreposição */
+.hero-section {
+    background-image: linear-gradient(rgba(124, 8, 38, 0.5), rgba(124, 8, 38, 0.5)), url('https://s2-quem.glbimg.com/moey7jdlVD2mfKTlW_43HrMjkN4=/0x0:6067x3467/888x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_b0f0e84207c948ab8b8777be5a6a4395/internal_photos/bs/2023/p/A/Y6MAYMRWA7pvgarJb4wg/variedade-indulgente-de-colecao-de-sobremesas-de-doces-frescos-gerados-por-ia.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #fba2c2; /* .color2 */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 150px 20px;
+    height: 600px;
+}
+
+.hero-content {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px 30px;
+    border-radius: 10px;
+}
+
+.hero-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    margin-bottom: 10px;
+    color: #7c0826; /* .color3 */
+}
+
+.hero-section p {
+    font-size: 20px;
+    color: #7c0826; /* .color3 */
+}
+
+/* Rodapé */
+footer {
+    background-color: #7c0826; /* .color3 */
+    color: #d0a8bc; /* .color5 */
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
